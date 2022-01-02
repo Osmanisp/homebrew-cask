@@ -1,16 +1,16 @@
 cask "kotlin-native" do
   arch = Hardware::CPU.intel? ? "x86_64" : "aarch64"
 
-  version "1.5.31"
+  version "1.6.10"
+
+  if Hardware::CPU.intel?
+    sha256 "a5c78e46df9825988febb9db9d407a9f2d6273faf4693add03686c422e4eb69f"
+  else
+    sha256 "5bef45d586790136ba29a00b6101175b8c6be14c5faaeb82ef6c68076f7cee23"
+  end
 
   url "https://github.com/JetBrains/kotlin/releases/download/v#{version}/kotlin-native-macos-#{arch}-#{version}.tar.gz",
       verified: "github.com/JetBrains/kotlin/"
-  if Hardware::CPU.intel?
-    sha256 "fde7224a8e04a6cd934ecbf55d4d51966f8a0668104f4316a76b3f38062d1ade"
-  else
-    sha256 "fbd005e360253e7d7ff1cd78b7cbbe34df0592812676deada6620a53d469d803"
-  end
-
   name "Kotlin Native"
   desc "LLVM backend for Kotlin"
   homepage "https://kotlinlang.org/docs/reference/native-overview.html"

@@ -1,16 +1,15 @@
 cask "goland" do
-  version "2021.2.3,212.5284.40"
+  arch = Hardware::CPU.intel? ? "" : "-aarch64"
+
+  version "2021.3.1,213.6461.23"
 
   if Hardware::CPU.intel?
-    sha256 "49db62e1adeab0c41c1310ff3a1c24e91fc6297aff3d5b4ce7d9266a23bf2b21"
-
-    url "https://download.jetbrains.com/go/goland-#{version.before_comma}.dmg"
+    sha256 "f3747511358049f88c585464a413799b758bcee1288428b886cf507191e35151"
   else
-    sha256 "3abcc5f600b579cff116b7fa45a90e4deb964e375ae42518446f26f080e97db7"
-
-    url "https://download.jetbrains.com/go/goland-#{version.before_comma}-aarch64.dmg"
+    sha256 "9675bc9680eaf217ad85c021ccdd4ca598d53063799c29dcef0bc53be0de39f1"
   end
 
+  url "https://download.jetbrains.com/go/goland-#{version.before_comma}#{arch}.dmg"
   name "Goland"
   desc "Go (golang) IDE"
   homepage "https://www.jetbrains.com/go/"

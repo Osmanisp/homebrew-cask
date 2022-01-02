@@ -1,8 +1,8 @@
 cask "busycal" do
-  version "2021.3.1,2021-07-23-05-33"
-  sha256 "33715d309403f0707bfbf0ec32065b46dc3a5b0995ebdf9d18eea6736d9ce906"
+  version "2021.4.3,2021-12-21-23-23"
+  sha256 "1376ef13a8607b66ec9b8e95a56cb14022c06e6e415aa76a5201e83861e6176a"
 
-  url "https://7e968b6ce8a839f034d9-23cfb9eddcb7b94cb43ba95f95a76900.ssl.cf1.rackcdn.com/bcl-#{version.before_comma}-#{version.after_comma}.zip",
+  url "https://7e968b6ce8a839f034d9-23cfb9eddcb7b94cb43ba95f95a76900.ssl.cf1.rackcdn.com/bcl-#{version.csv.first}-#{version.csv.second}.zip",
       verified: "7e968b6ce8a839f034d9-23cfb9eddcb7b94cb43ba95f95a76900.ssl.cf1.rackcdn.com/"
   name "BusyCal"
   desc "Calendar software focusing on flexibility and reliability"
@@ -11,7 +11,9 @@ cask "busycal" do
   livecheck do
     url "https://www.busymac.com/download/BusyCal.zip"
     strategy :header_match do |headers|
-      match = headers["location"].match(/bcl-(\d+(?:\.\d+)*)-(.*?)\.zip/)
+      match = headers["location"].match(/bcl-(\d+(?:\.\d+)+)-(.*?)\.zip/)
+      next if match.blank?
+
       "#{match[1]},#{match[2]}"
     end
   end
@@ -21,9 +23,9 @@ cask "busycal" do
 
   pkg "BusyCal Installer.pkg"
 
-  uninstall pkgutil: "com.busymac.busycal#{version.minor}.pkg",
-            quit:    "N4RA379GBW.com.busymac.busycal#{version.minor}.alarm",
-            signal:  ["TERM", "com.busymac.busycal#{version.minor}"]
+  uninstall pkgutil: "com.busymac.busycal3.pkg",
+            quit:    "N4RA379GBW.com.busymac.busycal3.alarm",
+            signal:  ["TERM", "com.busymac.busycal3"]
 
   zap trash: [
     "~/Library/Application Support/com.apple.sharedfilelist/com.apple.LSSharedFileList.ApplicationRecentDocuments/com.busymac.busycal#{version.major}.sfl*",

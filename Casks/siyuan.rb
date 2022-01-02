@@ -1,6 +1,6 @@
 cask "siyuan" do
-  version "1.4.1"
-  sha256 "e20e4ddf072abb3157774c3ada63e5b5ffcbd0cbc8f2bff370d9fbcd58ad20b6"
+  version "1.5.4"
+  sha256 "b1de6387275bbc91461fa9946531c8ae3ee132240c244b1853243567ce02681f"
 
   url "https://github.com/siyuan-note/siyuan/releases/download/v#{version}/siyuan-#{version}-mac.dmg"
   name "SiYuan"
@@ -10,9 +10,9 @@ cask "siyuan" do
   app "SiYuan.app"
 
   zap trash: [
+    "~/.siyuan",
     "~/Library/Application Support/SiYuan",
     "~/Library/Preferences/org.b3log.siyuan.plist",
     "~/Library/Saved Application State/org.b3log.siyuan.savedState",
-    "~/.siyuan",
   ]
 end

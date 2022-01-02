@@ -1,15 +1,15 @@
 cask "dbeaver-community" do
   arch = Hardware::CPU.intel? ? "x86_64" : "aarch64"
 
-  version "21.2.2"
+  version "21.3.2"
 
-  url "https://dbeaver.io/files/#{version}/dbeaver-ce-#{version}-macos-#{arch}.dmg"
   if Hardware::CPU.intel?
-    sha256 "985489c389c9cf56d8bd795ac72598d6c4361eb71c1cc13942bc838734befed8"
+    sha256 "8278253d121e1c74645ed302263dd340f61fadd075c9d676732c248b47011f26"
   else
-    sha256 "3190457fe92c5f1c1668b8b8813e632f6cbbc0e0ce48264b326ef6531fcbe6a3"
+    sha256 "5810939ec9e2d0176d7e837abab2b2f4b21a1adc11f56c0099969c9491c3ad47"
   end
 
+  url "https://dbeaver.io/files/#{version}/dbeaver-ce-#{version}-macos-#{arch}.dmg"
   name "DBeaver Community Edition"
   desc "Universal database tool and SQL client"
   homepage "https://dbeaver.io/"

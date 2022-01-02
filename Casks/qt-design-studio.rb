@@ -1,6 +1,6 @@
 cask "qt-design-studio" do
-  version "2.2.0"
-  sha256 "9c4f3325d44e91ccd95a02c06f2510b5ea924a11e1fd25d36559d3e4d9f1845e"
+  version "2.3.1"
+  sha256 "c085a6acbe89e53a7e27ae8564e4bf8df8cc459e536ec2319e8f897718d7c66c"
 
   url "https://download.qt.io/official_releases/qtdesignstudio/#{version}/qt-designstudio-mac-x86_64-#{version}-community.dmg"
   name "Qt Design Studio"
@@ -9,7 +9,7 @@ cask "qt-design-studio" do
 
   livecheck do
     url "https://download.qt.io/official_releases/qtdesignstudio/"
-    regex(%r{href=.*?(\d+(?:\.\d+)*)/}i)
+    regex(%r{href=.*?(\d+(?:\.\d+)+)/}i)
   end
 
   depends_on macos: ">= :sierra"

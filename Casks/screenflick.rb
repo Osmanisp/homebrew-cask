@@ -1,6 +1,6 @@
 cask "screenflick" do
-  version "2.7.59"
-  sha256 "c2e853cb40c196848c87dde5bd511ee3970b80e3c8f2786ffd120d1cb61743b7"
+  version "3.0.7"
+  sha256 "9f76efcdcc81a6e99e1fe6b56bab3fb46f48b326b09cd22aa434cbb0c91abcfa"
 
   url "https://store.araelium.com/screenflick/downloads/versions/Screenflick#{version}.zip"
   name "Screenflick"
@@ -12,7 +12,13 @@ cask "screenflick" do
     regex(%r{/Screenflick(\d+(?:\.\d+)+)\.zip}i)
   end
 
-  depends_on macos: ">= :sierra"
+  depends_on macos: ">= :mojave"
 
   app "Screenflick.app"
+
+  zap trash: [
+    "~/Library/Caches/com.araeliumgroup.screenflick",
+    "~/Library/Preferences/com.araeliumgroup.screenflick.plist",
+    "~/Library/WebKit/com.araeliumgroup.screenflick",
+  ]
 end

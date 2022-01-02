@@ -1,6 +1,6 @@
 cask "sublime-text" do
-  version "4.113"
-  sha256 "5b51c889f418e06a3552509856603d736cfe23b488bf4996edb56f1c5700b757"
+  version "4.126"
+  sha256 "06e47f404b3e1c14d505bfbd0b884f8d5a62c9f376a62f735a693dc31d9cc212"
 
   url "https://download.sublimetext.com/sublime_text_build_#{version.no_dots}_mac.zip"
   name "Sublime Text"
@@ -12,6 +12,8 @@ cask "sublime-text" do
     regex(/href=.*?v?(\d+)_mac\.zip/i)
     strategy :page_match do |page, regex|
       match = page.match(regex)[1]
+      next if match.blank?
+
       "#{match[0]}.#{match[1..]}"
     end
   end
@@ -34,6 +36,11 @@ cask "sublime-text" do
     "~/Library/Application Support/Sublime Text 3",
     "~/Library/Caches/com.sublimetext.#{version.major}",
     "~/Library/Caches/com.sublimetext.3",
+    "~/Library/Caches/Sublime Text",
+    "~/Library/Caches/Sublime Text (Safe Mode)",
+    "~/Library/Caches/Sublime Text 3",
+    "~/Library/HTTPStorages/com.sublimetext.#{version.major}",
+    "~/Library/HTTPStorages/com.sublimetext.3",
     "~/Library/Preferences/com.sublimetext.#{version.major}.plist",
     "~/Library/Preferences/com.sublimetext.3.plist",
     "~/Library/Saved Application State/com.sublimetext.#{version.major}.savedState",

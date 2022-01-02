@@ -1,16 +1,15 @@
 cask "tinkerwell" do
-  version "2.17.0"
+  arch = Hardware::CPU.intel? ? "" : "-arm64"
+
+  version "2.19.0"
 
   if Hardware::CPU.intel?
-    sha256 "ab0d0f7064aed3a2f0f1455432612a858a48415822d5772c48a2b1d0ff55215b"
-
-    url "https://download.tinkerwell.app/tinkerwell/Tinkerwell-#{version}.dmg"
+    sha256 "f5bf17eef5652b51b19cbd884df8ca3a0ceee69211ec80d10a0290f0290a5d42"
   else
-    sha256 "291138464954a3ff1159d66fc568545327ebf3a71b294eded2811ba2b51d2fb9"
-
-    url "https://download.tinkerwell.app/tinkerwell/Tinkerwell-#{version}-arm64.dmg"
+    sha256 "20c1129db8e78bf13c35e8b8182dd239186166371506f7d4ebb4523c00a59578"
   end
 
+  url "https://download.tinkerwell.app/tinkerwell/Tinkerwell-#{version}#{arch}.dmg"
   name "Tinkerwell"
   desc "Tinker tool for PHP and Laravel developers"
   homepage "https://tinkerwell.app/"

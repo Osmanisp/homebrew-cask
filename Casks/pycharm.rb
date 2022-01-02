@@ -1,12 +1,13 @@
 cask "pycharm" do
-  version "2021.2.2,212.5284.44"
+  arch = Hardware::CPU.intel? ? "" : "-aarch64"
 
+  version "2021.3.1,213.6461.77"
+
+  url "https://download.jetbrains.com/python/pycharm-professional-#{version.csv.first}#{arch}.dmg"
   if Hardware::CPU.intel?
-    sha256 "ab09e8670e3e31bb119b8bd14f810d6dcae3a1948591f6d2ab88da238eb8b71e"
-    url "https://download.jetbrains.com/python/pycharm-professional-#{version.before_comma}.dmg"
+    sha256 "ccef103ccc9dd1cfc4ffc2107702627ae8d1b7f33a5e89ac519b1de859d7c0c5"
   else
-    sha256 "798ad26b4a1abddd06297101ba54f262d7a8bc46d9b64b338484bedf5908ec6d"
-    url "https://download.jetbrains.com/python/pycharm-professional-#{version.before_comma}-aarch64.dmg"
+    sha256 "b9c6629f9ab15ce6174c4028506d6565b8f6f973ce6af73746923e2fcdc19942"
   end
 
   name "PyCharm"

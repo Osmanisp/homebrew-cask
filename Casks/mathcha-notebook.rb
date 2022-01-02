@@ -1,6 +1,6 @@
 cask "mathcha-notebook" do
-  version "1.0.424"
-  sha256 "5a4c23cea148047f2172cf8ee70de9d4a9e2137e5971363d172fd400825ff5ca"
+  version "1.0.427"
+  sha256 "7d7e3642cdcab1a375e3ceed0815a22b49ec7efcde29f4901e38f82c84a73359"
 
   url "https://notebook-downloads.mathcha.io/public/Mathcha%20Notebook-#{version}-mac.zip"
   name "Mathcha Notebook"

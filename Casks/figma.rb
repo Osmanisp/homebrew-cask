@@ -1,12 +1,12 @@
 cask "figma" do
   arch = Hardware::CPU.intel? ? "mac" : "mac-arm"
 
-  version "102.9.0"
+  version "107.1.0"
 
   if Hardware::CPU.intel?
-    sha256 "88d30dc1fd870d32ae705828cafe77ace5120dab28a157824ba58405910cffbc"
+    sha256 "cb5e73a2b3a6f347d6729e9a2585cfdd3ba2ad00edeec6f0edbbb7a57f14d172"
   else
-    sha256 "b1c1b23b1f31e98f11383582c32a84c1a2ea16a93cd09f1da91b2326328d30c1"
+    sha256 "8cbb43d9fb7aefc1a86d8ee0452b3b460cb051b8397de7160bf5e8ed9b15595e"
   end
 
   url "https://desktop.figma.com/#{arch}/Figma-#{version}.zip"
@@ -16,7 +16,9 @@ cask "figma" do
 
   livecheck do
     url "https://desktop.figma.com/#{arch}/RELEASE.json"
-    regex(%r{/Figma[._-]v?(\d+(?:\.\d+)+)\.zip}i)
+    strategy :page_match do |page|
+      JSON.parse(page)["version"]
+    end
   end
 
   auto_updates true
@@ -25,6 +27,9 @@ cask "figma" do
 
   zap trash: [
     "~/Library/Application Support/Figma",
+    "~/Library/Application Support/figma-desktop",
+    "~/Library/Caches/com.figma.Desktop",
+    "~/Library/Caches/com.figma.agent",
     "~/Library/Preferences/com.figma.Desktop.plist",
     "~/Library/Saved Application State/com.figma.Desktop.savedState",
   ]

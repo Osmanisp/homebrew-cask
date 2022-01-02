@@ -1,16 +1,16 @@
 cask "ferdi" do
   arch = Hardware::CPU.intel? ? "" : "-arm64"
 
-  version "5.6.2"
+  version "5.6.6"
+
+  if Hardware::CPU.intel?
+    sha256 "d3d94d28b67fadb225b602e8788f624694d34741de49cadf6d77c6f8491c274b"
+  else
+    sha256 "00f6e4863547ad9e3027442d132d4589521b37d576c57750127266334846f1f8"
+  end
 
   url "https://github.com/getferdi/ferdi/releases/download/v#{version}/Ferdi-#{version}#{arch}.dmg",
       verified: "github.com/getferdi/ferdi/"
-  if Hardware::CPU.intel?
-    sha256 "bfad74f6b22364f8ee80a3faf1b386707e76949c5eea68a47df11d298ee0bbc8"
-  else
-    sha256 "51dfa80046037bd53b3ace758b29b8a8f809b7493388cbcf96a408895ea089ea"
-  end
-
   name "Ferdi"
   desc "Messaging browser which combines several services"
   homepage "https://getferdi.com/"

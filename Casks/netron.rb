@@ -1,6 +1,6 @@
 cask "netron" do
-  version "5.3.0"
-  sha256 "d38ec8c4b56820d23079709ba60dd6156fa9e5bd2acd015fed819827bfa6b05d"
+  version "5.4.9"
+  sha256 "0b2c8d3dc8605b05fb4310d2a5978abdb996ac5bab79f8cdfd849011f5b2bbec"
 
   url "https://github.com/lutzroeder/netron/releases/download/v#{version}/Netron-#{version}-mac.zip"
   name "Netron"
@@ -10,7 +10,7 @@ cask "netron" do
   livecheck do
     url :url
     strategy :git
-    regex(/^v(\d+(?:\.\d+)*)$/)
+    regex(/^v(\d+(?:\.\d+)+)$/)
   end
 
   auto_updates true

@@ -59,16 +59,27 @@ cask "cocktail" do
       url "https://www.maintain.se/downloads/sparkle/catalina/catalina.xml"
       strategy :sparkle
     end
-  else
-    version "14.3.3"
-    sha256 "66d6315c156fa2928e56094a30b64b947c67d59a9f12341074c0beb2defc0154"
+  elsif MacOS.version <= :big_sur
+    version "14.4.1"
+    sha256 "10a7f6731d5055a097a0dda665583ec19eaf7001618f37e2c826b07408bc2752"
 
     url "https://www.maintain.se/downloads/Cocktail#{version.major}BSE.dmg"
 
     livecheck do
       url :homepage
       strategy :page_match
-      regex(/macOS\s*11(?:\.\d+)*.*?(\d+(?:\.\d+)*)/i)
+      regex(/macOS\s*11(?:\.\d+)*.*?(\d+(?:\.\d+)+)/i)
+    end
+  else
+    version "15.2"
+    sha256 "ce90ffe2089149a241e92503998ae5d65593d82bb70fbadea3c9cfc9f032e353"
+
+    url "https://www.maintain.se/downloads/Cocktail#{version.major}ME.dmg"
+
+    livecheck do
+      url :homepage
+      strategy :page_match
+      regex(/macOS\s*12(?:\.\d+)*.*?(\d+(?:\.\d+)+)/i)
     end
   end
 

@@ -1,18 +1,12 @@
 cask "reaper" do
-  version "6.37"
+  version "6.43"
 
   if MacOS.version <= :mojave
-    sha256 "2154a1d23914652b466e7d5a3a3398c1b5cf6e52637f125e7c359755b60b64c7"
-
+    sha256 "49f400ede001b934e5b6d2eba2e439b352be1b34697764c1e6f275d12292a5eb"
     url "https://www.reaper.fm/files/#{version.major}.x/reaper#{version.major_minor.no_dots}_x86_64.dmg"
-  elsif Hardware::CPU.intel?
-    sha256 "915f441675726211e056253c7536d7ffc06bf4eed92549f6a130f8b653cb233e"
-
-    url "https://www.reaper.fm/files/#{version.major}.x/reaper#{version.major_minor.no_dots}_x86_64_catalina.dmg"
   else
-    sha256 "9b65217fdbfeb992c2bc8c16020bf1f5f4a96d4bf7b9893a2a2e43e86f52a9dd"
-
-    url "https://www.reaper.fm/files/#{version.major}.x/reaper#{version.major_minor.no_dots}-beta_arm64.dmg"
+    sha256 "45a0b13e4abcd523feb05c3b51991e4f986fc709f1fc326ce4b9e3ee6d7c49a3"
+    url "https://www.reaper.fm/files/#{version.major}.x/reaper#{version.major_minor.no_dots}_universal.dmg"
   end
 
   name "REAPER"
@@ -24,18 +18,12 @@ cask "reaper" do
     regex(/^v?(\d+(?:\.\d+)+)$/i)
   end
 
-  auto_updates true
-
-  if Hardware::CPU.intel?
-    app "REAPER.app"
-    app "ReaMote.app"
-  else
-    app "REAPER-ARM.app"
-    app "ReaMote-ARM.app"
-  end
+  app "REAPER.app"
+  app "ReaMote.app"
 
   zap trash: [
     "~/Library/Application Support/REAPER",
+    "~/Library/Preferences/com.cockos.reaper.plist",
     "~/Library/Saved Application State/com.cockos.reaper.savedState",
     "~/Library/Saved Application State/com.cockos.reaperhosti386.savedState",
     "~/Library/Saved Application State/com.cockos.reaperhostx8664.savedState",

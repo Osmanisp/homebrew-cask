@@ -1,8 +1,8 @@
 cask "telegram" do
-  version "8.1.4,222346"
-  sha256 "30260124add2a5bc0cc8d7c56d668a511c60f9ed20601eee83b950dca78643c8"
+  version "8.4.1,225774"
+  sha256 "0dd3648d05c6c6577202b79952c9ef6b3342337b4144fa7161546bd35370fcf7"
 
-  url "https://osx.telegram.org/updates/Telegram-#{version.before_comma}.#{version.after_comma}.app.zip"
+  url "https://osx.telegram.org/updates/Telegram-#{version.csv.first}.#{version.csv.second}.app.zip"
   name "Telegram for macOS"
   desc "Messaging app with a focus on speed and security"
   homepage "https://macos.telegram.org/"
@@ -21,6 +21,8 @@ cask "telegram" do
   app "Telegram.app"
 
   zap trash: [
+    "~/Library/Application Scripts/*.ru.keepcoder.Telegram",
+    "~/Library/Application Scripts/*.ru.keepcoder.Telegram.TelegramShare",
     "~/Library/Application Scripts/ru.keepcoder.Telegram",
     "~/Library/Application Scripts/ru.keepcoder.Telegram.TelegramShare",
     "~/Library/Caches/ru.keepcoder.Telegram",
@@ -28,6 +30,8 @@ cask "telegram" do
     "~/Library/Containers/ru.keepcoder.Telegram.TelegramShare",
     "~/Library/Cookies/ru.keepcoder.Telegram.binarycookies",
     "~/Library/Group Containers/*.ru.keepcoder.Telegram",
+    "~/Library/Group Containers/*.ru.keepcoder.Telegram.TelegramShare",
+    "~/Library/HTTPStorages/ru.keepcoder.Telegram",
     "~/Library/Preferences/ru.keepcoder.Telegram.plist",
     "~/Library/Saved Application State/ru.keepcoder.Telegram.savedState",
   ]

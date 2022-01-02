@@ -1,8 +1,8 @@
 cask "cog" do
-  version "1611,1fd160dc"
-  sha256 "e14481f036b57ee367a877854b64082ce9b68fb505bc6214ff78fb9903a13c4a"
+  version "1631,caf4855b"
+  sha256 "9e277520813a992b6ff69e89d0232b0f4c18015cf8cf4ff69012d2b946d72c11"
 
-  url "https://f.losno.co/cog/Cog-#{version.after_comma}.zip"
+  url "https://f.losno.co/cog/Cog-#{version.csv.second}.zip"
   name "Cog"
   desc "Audio player"
   homepage "https://cog.losno.co/"

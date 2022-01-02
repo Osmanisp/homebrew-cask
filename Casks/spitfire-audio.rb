@@ -1,9 +1,9 @@
 cask "spitfire-audio" do
-  version "3.3.10,1626771600"
-  sha256 "1b9972d0711dfb5c4779e8801dc0b96e8ae2415e806c4e657efe9caeee040e5d"
+  version "3.3.22,1639562400"
+  sha256 "0a4b97c384b790a5ded9e426fb6b14a8401f67222af68225bebcea90e61b630b"
 
-  url "https://d1t3zg51rvnesz.cloudfront.net/p/files/lm/#{version.after_comma}/mac/SpitfireAudio-Mac-#{version.before_comma}.dmg",
-      verified: "d1t3zg51rvnesz.cloudfront.net/"
+  url "https://d1t3zg51rvnesz.cloudfront.net/p/files/lm/#{version.csv.second}/mac/SpitfireAudio-Mac-#{version.csv.first}.dmg",
+      verified: "d1t3zg51rvnesz.cloudfront.net/p/files/lm/"
   name "Spitfire Audio"
   desc "Download manager for Spitfire audio libraries"
   homepage "https://www.spitfireaudio.com/info/library-manager/"
@@ -11,7 +11,9 @@ cask "spitfire-audio" do
   livecheck do
     url "https://www.spitfireaudio.com/library-manager/download/mac/"
     strategy :header_match do |headers|
-      match = headers["location"].match(%r{/(\d+)/.*-(\d+(?:\.\d+)*)\.dmg}i)
+      match = headers["location"].match(%r{/(\d+)/.*-(\d+(?:\.\d+)+)\.dmg}i)
+      next if match.blank?
+
       "#{match[2]},#{match[1]}"
     end
   end

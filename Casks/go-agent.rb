@@ -1,8 +1,8 @@
 cask "go-agent" do
-  version "21.2.0-12498"
-  sha256 "6ab72f40f6205de1cc5861ce10bffceb0f9ce49580b399f9b214df93f31a2e1f"
+  version "21.4.0,13469"
+  sha256 "c1cfc71c5389cbb9d7d290448995515d93a01b7f1c4c236be9f0b39c4f8b89b0"
 
-  url "https://download.gocd.io/binaries/#{version}/osx/go-agent-#{version}-osx.zip",
+  url "https://download.gocd.io/binaries/#{version.before_comma}-#{version.after_comma}/osx/go-agent-#{version.before_comma}-#{version.after_comma}-osx.zip",
       verified: "download.gocd.io/binaries/"
   name "Go Agent"
   name "GoCD Agent"
@@ -11,9 +11,11 @@ cask "go-agent" do
 
   livecheck do
     url "https://download.gocd.org/releases.json"
-    strategy :page_match
-    regex(/go-agent-(\d+(?:\.\d+)*-\d+)-osx\.zip/i)
+    regex(/go[._-]agent[._-]v?(\d+(?:\.\d+)+)[._-](\d+)[._-]osx\.zip/i)
+    strategy :page_match do |page, regex|
+      page.scan(regex).map { |match| "#{match[0]},#{match[1]}" }
+    end
   end
 
-  binary "go-agent-#{version.split("-").first}/bin/go-agent"
+  binary "go-agent-#{version.before_comma}/bin/go-agent"
 end

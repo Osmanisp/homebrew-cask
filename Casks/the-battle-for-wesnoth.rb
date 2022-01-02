@@ -1,6 +1,6 @@
 cask "the-battle-for-wesnoth" do
-  version "1.14.17"
-  sha256 "7ab1c7fbd5c691a7edec696d3cbb8a8271225a5687a6a050b71e5ceac1dd6d55"
+  version "1.16.1a"
+  sha256 "6ece41d6e78aa04217633a21d4f4e9b515c2ea74b2bf1713dbc248405637aa05"
 
   url "https://downloads.sourceforge.net/wesnoth/Wesnoth_#{version}.dmg",
       verified: "sourceforge.net/wesnoth/"
@@ -9,8 +9,8 @@ cask "the-battle-for-wesnoth" do
   homepage "https://wesnoth.org/"
 
   livecheck do
-    url "https://sourceforge.net/projects/wesnoth/files/latest/download&user_agent=Intel%20Mac%20OS%20X"
-    strategy :header_match
+    url :homepage
+    regex(/href=.*?Wesnoth[._-]v?(\d+(?:\.\d+)+[a-z]?)\.dmg/i)
   end
 
   app "The Battle for Wesnoth.app"

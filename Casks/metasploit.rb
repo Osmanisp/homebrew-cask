@@ -1,8 +1,8 @@
 cask "metasploit" do
-  version "6.1.9,20211005103003"
-  sha256 "0f4fef7989aecde16e9b22779e300c10a90196eabeef9287793853ccc10e895c"
+  version "6.1.23,20211231112930"
+  sha256 "44addb27eb7310afee4aebe537ee45a19234eea58e74dfeed0ad370076f82f2e"
 
-  url "https://osx.metasploit.com/metasploit-framework-#{version.before_comma}%2B#{version.after_comma}-1rapid7-1.pkg"
+  url "https://osx.metasploit.com/metasploit-framework-#{version.csv.first}%2B#{version.csv.second}-1rapid7-1.x86_64.pkg"
   name "Metasploit Framework"
   desc "Penetration testing framework"
   homepage "https://www.metasploit.com/"
@@ -10,14 +10,16 @@ cask "metasploit" do
   livecheck do
     url "https://osx.metasploit.com/LATEST"
     strategy :page_match do |page|
-      match = page.match(/metasploit-framework-(\d+(?:\.\d+)*)\+(\d+)-1rapid7-1\.pkg/i)
+      match = page.match(/metasploit-framework-(\d+(?:\.\d+)+)\+(\d+)-1rapid7-1\.x86_64\.pkg/i)
+      next if match.blank?
+
       "#{match[1]},#{match[2]}"
     end
   end
 
   depends_on formula: "nmap"
 
-  pkg "metasploit-framework-#{version.before_comma}+#{version.after_comma}-1rapid7-1.pkg"
+  pkg "metasploit-framework-#{version.csv.first}+#{version.csv.second}-1rapid7-1.x86_64.pkg"
   binary "/opt/metasploit-framework/bin/msfbinscan"
   binary "/opt/metasploit-framework/bin/msfconsole"
   binary "/opt/metasploit-framework/bin/msfd"

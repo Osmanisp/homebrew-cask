@@ -1,6 +1,6 @@
 cask "silo" do
-  version "2021.2.0"
-  sha256 "d5b7df6b22e0feda43c84ff014dfaace31c532238f1a3f55aa85855913a29f65"
+  version "2021.4.0"
+  sha256 "5600da9ab3e5b166e01f63525b1ad64651c307212563891cc73448cd0d646184"
 
   url "https://nevercenter.com/silo/download/filearchive/Install_Silo_#{version.major}_#{version.minor}#{version.patch}_mac.dmg"
   name "Silo"
@@ -9,10 +9,15 @@ cask "silo" do
 
   livecheck do
     url "https://nevercenter.com/silo/download/"
-    regex(/Silo\s*(\d+(?:\.\d+)*)\s*/i)
+    regex(/Silo\s*(\d+(?:\.\d+)+)\s*/i)
   end
 
   depends_on macos: ">= :mojave"
 
   app "Silo.app"
+
+  zap trash: [
+    "/Library/Caches/com.nevercenter.silo",
+    "~/Library/Application Support/com.nevercenter.silo",
+  ]
 end

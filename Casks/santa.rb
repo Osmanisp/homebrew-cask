@@ -1,6 +1,6 @@
 cask "santa" do
-  version "2021.5"
-  sha256 "a54f94ea242ad48d219c80415a86d6b7a44a43075162d1dcbe100542417277ae"
+  version "2021.8"
+  sha256 "f27b5fcd3efdbc43fb7f1139f85175e74dc8ae5cf2afd48d3d89d0ba59aa9248"
 
   url "https://github.com/google/santa/releases/download/#{version}/santa-#{version}.dmg"
   name "Santa"
@@ -9,11 +9,15 @@ cask "santa" do
 
   pkg "santa-#{version}.pkg"
 
-  uninstall delete:    "/usr/local/bin/santactl",
+  uninstall delete:    [
+    "/Applications/Santa.app",
+    "/usr/local/bin/santactl",
+  ],
             kext:      "com.google.santa-driver",
             launchctl: [
               "com.google.santa",
               "com.google.santa.bundleservice",
+              "com.google.santa.metricservice",
               "com.google.santad",
             ],
             pkgutil:   "com.google.santa"

@@ -1,15 +1,15 @@
 cask "exodus" do
   arch = Hardware::CPU.intel? ? "macos" : "macos-arm64"
 
-  version "21.10.11"
+  version "21.12.31"
 
-  url "https://downloads.exodus.com/releases/exodus-#{arch}-#{version}.dmg"
-  if Hardware::CPU.intel?
-    sha256 "373dd17e40bfd61a46cf9133eaad159ded9d083db4e8dd9db92a08b6c0b835a8"
+  if arch == "macos"
+    sha256 "4f665a019f2afcf36db17233c3a3d4eb4c06b32476991c3188c5eea8beaa2a7a"
   else
-    sha256 "bb20343f8fe740cca6d8b6f36cf687e538ac5ad72353f8d3168b7945c5f2b743"
+    sha256 "ad73ce1ede2fd19f2b3fbf98de788678fc25cce968f3ad7997f34857470cdb18"
   end
 
+  url "https://downloads.exodus.com/releases/exodus-#{arch}-#{version}.dmg"
   name "Exodus"
   desc "Desktop wallet for cryptocurrency assets"
   homepage "https://www.exodus.com/"

@@ -1,15 +1,15 @@
 cask "cleanshot" do
-  version "3.9.1"
-  sha256 "0cf07ae5ab708708977b6eab6a6e8dc14e9fa526880434d64872840e166e00f1"
+  version "4.0"
+  sha256 "035b429459257d134298e3bf4f1670e2d58fcec9a304309eeb27fc5725527f24"
 
-  url "https://updates.getcleanshot.com/v#{version.major}/CleanShot-X-#{version}.dmg"
+  url "https://updates.getcleanshot.com/v3/CleanShot-X-#{version}.dmg"
   name "CleanShot"
   desc "Screen capturing tool"
   homepage "https://getcleanshot.com/"
 
   livecheck do
     url "https://cleanshot.com/changelog"
-    regex(/class="number">(\d+(?:\.\d+)*)/i)
+    regex(/class="number">(\d+(?:\.\d+)+)/i)
   end
 
   auto_updates true
@@ -23,6 +23,7 @@ cask "cleanshot" do
     "~/Library/Application Support/CleanShot",
     "~/Library/Caches/pl.maketheweb.cleanshotx",
     "~/Library/Caches/SentryCrash/CleanShot X",
+    "~/Library/Preferences/com.getcleanshot.app.plist",
     "~/Library/Preferences/pl.maketheweb.cleanshotx.plist",
   ]
 end

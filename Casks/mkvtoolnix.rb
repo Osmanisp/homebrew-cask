@@ -1,6 +1,6 @@
 cask "mkvtoolnix" do
-  version "62.0.0"
-  sha256 "52036072568d0836b6d308f3d1c7be93b3b4b60f91fa69a38ecdddc6b99043db"
+  version "64.0.0"
+  sha256 "72999f645e7e5989cd33efcd7383514874c4e65b03ad964f621c40a1254523cc"
 
   url "https://mkvtoolnix.download/macos/MKVToolNix-#{version}.dmg"
   name "MKVToolNix"
@@ -10,7 +10,7 @@ cask "mkvtoolnix" do
   livecheck do
     url "https://mkvtoolnix.download/macos/"
     strategy :page_match
-    regex(%r{href=.*?/MKVToolNix-(\d+(?:\.\d+)*)\.dmg}i)
+    regex(%r{href=.*?/MKVToolNix-(\d+(?:\.\d+)+)\.dmg}i)
   end
 
   conflicts_with formula: "mkvtoolnix"
@@ -21,4 +21,9 @@ cask "mkvtoolnix" do
   binary "#{appdir}/MKVToolNix-#{version}.app/Contents/MacOS/mkvinfo"
   binary "#{appdir}/MKVToolNix-#{version}.app/Contents/MacOS/mkvmerge"
   binary "#{appdir}/MKVToolNix-#{version}.app/Contents/MacOS/mkvpropedit"
+
+  zap trash: [
+    "~/Library/Preferences/bunkus.org/mkvtoolnix-gui",
+    "~/Library/Saved Application State/download.mkvtoolnix.MKVToolNix.savedState",
+  ]
 end

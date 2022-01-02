@@ -1,6 +1,6 @@
 cask "grandtotal" do
-  version "7.1.5"
-  sha256 "68244d5f6d558a1daa14826a3dd50b9fa616b802e8417116f48b55be590d12fe"
+  version "7.2.3"
+  sha256 "11cd8e1f3c40119ef68d508c77cafa0a7781e59970dfb339c5beef9fd63e06b1"
 
   url "https://mediaatelier.com/GrandTotal#{version.major}/GrandTotal_#{version}.zip"
   name "GrandTotal"
@@ -15,4 +15,10 @@ cask "grandtotal" do
   depends_on macos: ">= :high_sierra"
 
   app "GrandTotal.app"
+
+  zap trash: [
+    "~/Library/Application Support/com.mediaatelier.GrandTotal3",
+    "~/Library/Preferences/com.mediaatelier.GrandTotal3.plist",
+    "~/Library/Saved Application State/com.mediaatelier.GrandTotal3.savedState",
+  ]
 end

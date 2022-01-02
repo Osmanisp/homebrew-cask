@@ -1,6 +1,6 @@
 cask "beyond-compare" do
-  version "4.4.0.25886"
-  sha256 "75ecf7d1ad6ca7ee17b8105886ed3b5699f5f805265f4362eda69dee1cb66a34"
+  version "4.4.1.26165"
+  sha256 "801431270ee6eb8f726594029445ae3575edb757c26cca23c8b223cbdee3d6cf"
 
   url "https://www.scootersoftware.com/BCompareOSX-#{version}.zip"
   name "Beyond Compare"
@@ -10,7 +10,7 @@ cask "beyond-compare" do
   livecheck do
     url "https://www.scootersoftware.com/download.php?zz=v4changelog"
     strategy :page_match
-    regex(/<h2[^>]*>(\d+(?:\.\d+)*)/i)
+    regex(/<h2[^>]*>(\d+(?:\.\d+)+)/i)
   end
 
   auto_updates true
